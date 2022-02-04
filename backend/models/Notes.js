@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-
-
-
 const NotesSchema = new Schema({
     titile: {
         type: String,
