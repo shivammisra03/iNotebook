@@ -7,7 +7,7 @@ const { body, validationResult } = require('express-validator');
 const brcypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const JWT_SECRET='Shivamverifiedit';
+const JWT_SECRET = 'Shivamverifiedit';
 //create a user using POST : '/api/auth/createUser' doesnt require auth
 router.post('/createuser', [
     body('name', 'Enter a valid name').isLength({ min: 3 }),
@@ -34,21 +34,48 @@ router.post('/createuser', [
         })
 
         data = {
-            user : {
-                id : user.id
+            user: {
+                id: user.id
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET)
-        res.json({authToken})
+        res.json({ authToken })
     } catch (error) {
         console.error(error.message)
-        res.status(500).send('Some error occured')
+        res.status(500).send('Internal Server error occured')
     }
-
-
-
-
 })
 
+router.post('/login', [
+    body('email', 'Enter a valid email').isEmail(),
+    body('password', 'Password cannot be blank').exists()], async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { email, password } = req.body;
+        try {
+            let user = await User.findOne({ email });
+            if (!user) {
+                return res.status(400).json({ error: 'Please try to login with correct credential' });
+            }
+
+            const pwdComapre = await brcypt.compare(password, user.password);
+            if (!pwdComapre) {
+                return res.status(400).json({ error: 'Please try to login with correct credential' });
+            }
+            const data = {
+                user: {
+                    id: user.id
+                }
+            }
+            const authToken = jwt.sign(data, JWT_SECRET)
+            res.json({ authToken })
+        } catch (error) {
+            console.error(error.message)
+            res.status(500).send('Internal Server error occured')
+        }
+    })
 
 module.exports = router
