@@ -40,4 +40,25 @@ router.post('/addnote', fetchuser, [
 
 })
 
+
+//Route 3 update an existing note : /api/notes/udpatenote Login required
+router.put('/updatenote/:id', fetchuser, async (req, res) => {
+
+    const { title, description, tag } = req.body;
+    const newnote = {}
+    if (title) newnote.title = title;
+    if (description) newnote.description = description;
+    if (tag) newnote.tag = tag;
+
+    //find the note to be updated
+    // const note = Notes.findByIdAndUpdate(req.body.user.id)
+    let note = await Notes.findById(req.params.id)
+    if (!note)
+        return res.status(404).send('Not found')
+    console.log("User :" + note.user.toString())
+    if (note.user.toString() != req.user.id)
+        return res.status(401).send('Not Authorized')
+    note = await Notes.findByIdAndUpdate(req.params.id, { $set: newnote }, { new: true })
+    res.send(note)
+})
 module.exports = router
