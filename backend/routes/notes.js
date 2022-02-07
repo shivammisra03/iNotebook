@@ -43,22 +43,48 @@ router.post('/addnote', fetchuser, [
 
 //Route 3 update an existing note : /api/notes/udpatenote Login required
 router.put('/updatenote/:id', fetchuser, async (req, res) => {
-
     const { title, description, tag } = req.body;
-    const newnote = {}
-    if (title) newnote.title = title;
-    if (description) newnote.description = description;
-    if (tag) newnote.tag = tag;
+    try {
+        const newnote = {}
+        if (title) newnote.title = title;
+        if (description) newnote.description = description;
+        if (tag) newnote.tag = tag;
 
-    //find the note to be updated
-    // const note = Notes.findByIdAndUpdate(req.body.user.id)
-    let note = await Notes.findById(req.params.id)
-    if (!note)
-        return res.status(404).send('Not found')
-    console.log("User :" + note.user.toString())
-    if (note.user.toString() != req.user.id)
-        return res.status(401).send('Not Authorized')
-    note = await Notes.findByIdAndUpdate(req.params.id, { $set: newnote }, { new: true })
-    res.send(note)
+        //find the note to be updated
+        // const note = Notes.findByIdAndUpdate(req.body.user.id)
+        let note = await Notes.findById(req.params.id)
+        if (!note)
+            return res.status(404).send('Not found')
+        console.log("User :" + note.user.toString())
+        if (note.user.toString() != req.user.id)
+            return res.status(401).send('Not Authorized')
+        note = await Notes.findByIdAndUpdate(req.params.id, { $set: newnote }, { new: true })
+        res.send(note)
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send('Internal Server error occured')
+    }
+})
+
+//Route 4 update an existing note : /api/notes/deletenote Login required
+router.delete('/deletenote/:id', fetchuser, async (req, res) => {
+
+    try {
+        //find the note to be updated
+        // const note = Notes.findByIdAndUpdate(req.body.user.id)
+        let note = await Notes.findById(req.params.id)
+        if (!note)
+            return res.status(404).send('Not found')
+        console.log("User :" + note.user.toString())
+
+        if (note.user.toString() != req.user.id)
+            return res.status(401).send('Not Authorized')
+        note = await Notes.findByIdAndDelete(req.params.id)
+        res.send({ success: 'Note has been deleted', note: note })
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send('Internal Server error occured')
+    }
+
 })
 module.exports = router
