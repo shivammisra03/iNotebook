@@ -31,6 +31,42 @@ const NoteState = (props) => {
             "tag": "General",
             "timestamp": "2022-02-10T16:03:23.596Z",
             "__v": 0
+        },
+        {
+            "_id": "6205374bec245f1d1409a491",
+            "user": "61fe7451e52419a8123a5d01",
+            "title": "my third title",
+            "description": "kya kre bhai",
+            "tag": "General",
+            "timestamp": "2022-02-10T16:03:23.596Z",
+            "__v": 0
+        },
+        {
+            "_id": "6205374bec245f1d1409a491",
+            "user": "61fe7451e52419a8123a5d01",
+            "title": "my third title",
+            "description": "kya kre bhai",
+            "tag": "General",
+            "timestamp": "2022-02-10T16:03:23.596Z",
+            "__v": 0
+        },
+        {
+            "_id": "6205374bec245f1d1409a491",
+            "user": "61fe7451e52419a8123a5d01",
+            "title": "my third title",
+            "description": "kya kre bhai",
+            "tag": "General",
+            "timestamp": "2022-02-10T16:03:23.596Z",
+            "__v": 0
+        },
+        {
+            "_id": "6205374bec245f1d1409a491",
+            "user": "61fe7451e52419a8123a5d01",
+            "title": "my third title",
+            "description": "kya kre bhai",
+            "tag": "General",
+            "timestamp": "2022-02-10T16:03:23.596Z",
+            "__v": 0
         }
     ]
     // const s1 = {
