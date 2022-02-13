@@ -6,7 +6,7 @@ const NoteState = (props) => {
 
     const notesInitial = [
         {
-            "_id": "620112bf9a21612b1405deba",
+            "_id": "620112bf9a281612b1405deba",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my first title",
             "description": "kuch bhi",
@@ -15,7 +15,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "62053722ec245f1d1409a48e",
+            "_id": "620853722ec245f1d1409a48e",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my second title",
             "description": "kuch bhi returns",
@@ -24,7 +24,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6205374bec245f1d1409a491",
+            "_id": "62053674bec245f1d1409a491",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my third title",
             "description": "kya kre bhai",
@@ -33,7 +33,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6205374bec245f1d1409a491",
+            "_id": "62052374bec245f1d1409a491",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my third title",
             "description": "kya kre bhai",
@@ -42,7 +42,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6205374bec245f1d1409a491",
+            "_id": "36205374bec245f1d1409a491",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my third title",
             "description": "kya kre bhai",
@@ -51,7 +51,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6205374bec245f1d1409a491",
+            "_id": "62053174bec245f1d1409a491",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my third title",
             "description": "kya kre bhai",
@@ -60,7 +60,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6205374bec245f1d1409a491",
+            "_id": "6205374bec245f1d1409a4912",
             "user": "61fe7451e52419a8123a5d01",
             "title": "my third title",
             "description": "kya kre bhai",
