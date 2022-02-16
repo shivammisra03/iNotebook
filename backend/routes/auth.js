@@ -18,7 +18,8 @@ router.post('/createuser', [
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        let success = false;
+        return res.status(400).json({ success, errors: errors.array() });
     }
     try {
         //check if the email id provided already exists
@@ -41,7 +42,8 @@ router.post('/createuser', [
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET)
-        res.json({ authToken })
+        let success = true;
+        res.json({ success, authToken })
     } catch (error) {
         console.error(error.message)
         res.status(500).send('Internal Server error occured')
@@ -67,7 +69,8 @@ router.post('/login', [
 
             const pwdComapre = await brcypt.compare(password, user.password);
             if (!pwdComapre) {
-                return res.status(400).json({ error: 'Please try to login with correct credential' });
+                let success = false;
+                return res.status(400).json({ success, error: 'Please try to login with correct credential' });
             }
             const data = {
                 user: {
@@ -75,7 +78,8 @@ router.post('/login', [
                 }
             }
             const authToken = jwt.sign(data, JWT_SECRET)
-            res.json({ authToken })
+            let success = true;
+            res.json({ success, authToken })
         } catch (error) {
             console.error(error.message)
             res.status(500).send('Internal Server error occured')
