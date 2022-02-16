@@ -25,7 +25,8 @@ router.post('/createuser', [
         //check if the email id provided already exists
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-            return res.status(400).json({ error: 'Sorry, a user with this email already exists' })
+            let success = false;
+            return res.status(400).json({ success, error: 'Sorry, a user with this email already exists' })
         }
         const salt = await brcypt.genSalt(10)
         secPass = await brcypt.hash(req.body.password, salt)

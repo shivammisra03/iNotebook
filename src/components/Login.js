@@ -31,16 +31,16 @@ const Login = () => {
 
     }
     return (
-        <div>
+        <div className='container'>
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
                     <label for="email">Email address</label>
-                    <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={credential.email} placeholder="Enter email" onChange={onChange} />
+                    <input type="email" className="form-control" id="email" name='email' aria-describedby="emailHelp" value={credential.email} placeholder="Enter email" onChange={onChange} required />
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group mb-3">
                     <label for="password">Password</label>
-                    <input type="password" className="form-control" id="password" name='password' placeholder="Password" value={credential.password} onChange={onChange} />
+                    <input type="password" className="form-control" id="password" name='password' placeholder="Password" value={credential.password} onChange={onChange} required />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
