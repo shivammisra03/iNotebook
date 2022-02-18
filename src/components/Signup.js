@@ -27,7 +27,8 @@ const Signup = (props) => {
         setSignUpDetails({ ...signupDetails, [e.target.name]: e.target.value })
     }
     return (
-        <div className='container'>
+        <div className='container mt-2'>
+            <h2 className='my-3'>Create an account to use iNotebook</h2>
             <form onSubmit={onSubmit}>
                 <div className="form-group mb-3">
                     <label htmlFor="name">Name</label>
